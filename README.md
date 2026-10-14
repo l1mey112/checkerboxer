@@ -1,5 +1,7 @@
 # Checkerboxer
 
+[![Deploy with Zenith](https://cdn.zenith.hosting/buttons/deploy-with-zenith.svg)](https://zenith.hosting/host/checkerboxer)
+
 **One deployment. One shared Markdown checklist.**
 
 A small, self-hosted place to get things done together. Everyone who opens a deployment sees the same page. There are no accounts, workspaces, or external services to configure.
@@ -25,7 +27,11 @@ A small, self-hosted place to get things done together. Everyone who opens a dep
 
 XP is awarded once per normalized task text: 100 XP per task, 150 for `!high`. Undo/rechecking the same text does not award it again. Duplicate text shares a reward identity; editing the text creates a new identity. This is a cooperative motivational feature, not an anti-cheat system or a competitive leaderboard. Completed tasks present before game initialization earn no retroactive XP. Shared XP persists in SQLite; combos, timers, and activity signals are browser-session features.
 
-## Deploy and preview on Zenith
+## Deploy on Zenith
+
+Checkerboxer is published in the [Zenith catalogue](https://zenith.hosting/apps/checkerboxer). [Deploy your own Checkerboxer](https://zenith.hosting/host/checkerboxer) for managed hosting with your own shared page—no server setup required.
+
+### Developer previews
 
 The root `Dockerfile` and `zenith-compose.yml` are configured for Zenith. The app listens on `0.0.0.0:3000`, runs as the unprivileged `node` user, and stores SQLite on the `checkerboxer-data` named volume.
 
@@ -45,11 +51,11 @@ zenith down                      # explicitly stop the current preview
 
 An account has one active preview. Do not replace a different repository's preview without deciding to do so explicitly.
 
-### Catalogue publication
+### Catalogue updates
 
-Source: https://github.com/l1mey112/checkerboxer. `listing.json` contains the catalogue metadata. The project remains `UNLICENSED`; no open-source license grant is implied. Publishing requires one-time Developer Agreement acceptance for this repository in Zenith's browser flow.
+Checkerboxer is published on Zenith. Source: https://github.com/l1mey112/checkerboxer. `listing.json` contains the catalogue metadata. The project remains `UNLICENSED`; no open-source license grant is implied.
 
-Follow `.agents/skills/zenith-publish/SKILL.md`: commit and push the source, Dockerfile, and Compose file; provide real listing metadata and a screenshot of the running app; submit the full commit SHA. GitHub connection and the Developer Agreement are handled through Zenith. No credentials belong in this repository.
+For future releases, follow `.agents/skills/zenith-publish/SKILL.md`: commit and push the changes, then use `zenith publish update-code` with the full commit SHA. Use `zenith publish update-listing` for listing-only changes. No credentials belong in this repository.
 
 ## Sharing and privacy
 
