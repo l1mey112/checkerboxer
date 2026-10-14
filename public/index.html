@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4f0">
+  <meta name="description" content="One shared Markdown checklist. A little less to do, together.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Checkerboxer — one shared checklist</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/power.css">
+  <script src="/vendor/markdown-it.js" defer></script>
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Checkerboxer home"><span class="brand-icon" aria-hidden="true">✓</span>checkerboxer<span class="brand-period">.</span></a>
+    <div class="header-actions"><button id="command-open" class="command-trigger" title="Command palette (Ctrl / ⌘ K)"><span>⌕</span> Jump to anything <kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="Toggle night mode" title="Toggle night mode">◐</button><span id="presence" class="presence"><span class="live-dot"></span><span id="presence-text">Connecting</span></span><button id="share" class="button button-dark"><span aria-hidden="true">↗</span> Share page</button></div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="eyebrow"><span class="tiny-square"></span> ONE PAGE. ALL SYSTEMS GO.</div>
+      <h1>Make moves.<br>Check boxes.</h1>
+      <p class="intro">Your plans, in motion.<br>One shared page. Zero busywork.</p>
+      <section class="progress-card" aria-labelledby="progress-title">
+        <div class="card-top"><h2 id="progress-title">The big picture</h2><span aria-hidden="true">◔</span></div>
+        <div class="progress-number"><span id="done-count">0</span><span class="progress-denominator"> / <span id="total-count">0</span></span></div>
+        <p id="progress-caption">boxes checked. Keep going.</p>
+        <progress id="progress" max="1" value="0" aria-label="Checklist completion"></progress>
+        <div class="progress-bottom"><span id="remaining">Loading your page…</span><span id="percent">0%</span></div>
+      </section>
+      <section class="game-card" aria-label="Shared progress and rewards"><div class="game-top"><span class="eyebrow">SQUAD LEVEL</span><span id="game-rank">ROOKIE</span></div><div class="game-level"><span id="game-level">01</span><div><strong id="game-xp">0 XP</strong><small id="game-next">100 to next level</small></div><span class="rank-icon" id="rank-icon">✧</span></div><progress id="xp-progress" max="100" value="0" aria-label="Progress to next level"></progress><div class="combo-row"><span id="combo-label">BUILD YOUR MOMENTUM</span><span id="combo-count">×1</span></div><div class="combo-track"><div id="combo-fill"></div></div><div class="game-toggles"><button id="effects-toggle" aria-pressed="true">✦ Effects on</button><button id="sound-toggle" aria-pressed="false">♪ Sound off</button></div></section>
+      <div class="mission-stats"><div><span id="priority-count">0</span><small>HIGH PRIORITY</small></div><div><span id="due-count">0</span><small>DUE / OVERDUE</small></div></div>
+      <button id="templates-open" class="template-launch"><span>✧</span><div><strong>Start with a playbook</strong><small>A head start, not a blank page.</small></div><span>↗</span></button>
+      <div id="activity-panel" class="activity-panel"><div class="eyebrow">LIVE SIGNAL</div><div id="activity-feed" aria-live="polite"><p>Your page is coming online.</p></div></div>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">↗</span><div><strong>One link. One checklist.</strong><p>Everyone here sees the same page.<br>No sign-up. No “final-final” files.</p></div></div>
+      <div class="privacy-note"><span aria-hidden="true">◎</span><p>Anyone with this link can read and edit. Keep private things elsewhere.</p></div>
+      <a class="syntax-link" href="#" id="help-link">A tiny Markdown cheatsheet <span aria-hidden="true">↗</span></a>
+    </aside>
+
+    <section class="notebook" aria-label="Shared checklist">
+      <div class="notebook-toolbar">
+        <div class="view-switch" role="group" aria-label="Page view">
+          <button data-view="read" aria-pressed="true"><span aria-hidden="true">☑</span> Checklist</button>
+          <button data-view="board" aria-pressed="false"><span aria-hidden="true">▦</span> Board</button>
+          <button data-view="focus" aria-pressed="false"><span aria-hidden="true">◎</span> Focus</button>
+          <button data-view="split" aria-pressed="false"><span aria-hidden="true">▥</span> Split</button>
+          <button data-view="edit" aria-pressed="false"><span aria-hidden="true">⌘</span> Markdown</button>
+        </div>
+        <div class="document-actions"><button id="history" class="icon-button" aria-label="Version history" title="Version history">↶</button><button id="download" class="icon-button" aria-label="Download Markdown" title="Download Markdown">↓</button></div>
+      </div>
+      <div id="task-tools" class="task-tools"><div class="task-search-wrap"><span aria-hidden="true">⌕</span><label for="task-search" class="sr-only">Search tasks</label><input id="task-search" type="search" placeholder="Find a task, #tag, or a spark…" autocomplete="off"><kbd>/</kbd></div><div class="filter-controls"><label for="task-filter" class="sr-only">Filter tasks</label><select id="task-filter"><option value="all">All tasks</option><option value="open">Still to do</option><option value="done">Done &amp; dusted</option><option value="priority">High priority</option><option value="due">Due / overdue</option></select><span id="match-count"></span></div></div>
+      <div id="conflict" class="notice conflict" hidden>
+        <div><strong>This page changed while you were editing.</strong><p>Your draft hasn’t been overwritten. Compare it with the latest page before choosing.</p></div>
+        <div class="notice-actions"><button id="compare" class="button button-small">Compare</button><button id="use-latest" class="button button-small">Use latest page</button><button id="keep-draft" class="button button-small button-dark">Publish my draft</button></div>
+      </div>
+      <div id="staged-banner" class="notice staged-notice" hidden><div><strong>A version to review, not a change yet.</strong><p>Check this draft, then publish it when you’re ready. Editing won’t autosave until you choose.</p></div><div class="notice-actions"><button id="publish-staged" class="button button-small button-dark">Publish this draft</button><button id="discard-staged" class="button button-small">Back to current page</button></div></div>
+      <div id="error-banner" class="notice error-notice" role="alert" hidden><span id="error-message"></span><button id="retry" class="button button-small">Retry</button></div>
+      <div id="document-body" class="document-body" data-view="read">
+        <div id="editor-pane" class="editor-pane" hidden>
+          <div class="editor-toolbar" role="group" aria-label="Markdown formatting"><span>MARKDOWN</span><button data-insert="task" title="Insert checkbox" aria-label="Insert checkbox">☑</button><button data-insert="heading" title="Insert heading" aria-label="Insert heading">H</button><button data-insert="bold" title="Bold text" aria-label="Bold text"><b>B</b></button><button data-insert="link" title="Insert link" aria-label="Insert link">↗</button></div>
+          <label class="sr-only" for="editor">Shared page Markdown</label>
+          <textarea id="editor" spellcheck="true" placeholder="# Your next big thing&#10;&#10;- [ ] Start small" disabled></textarea>
+          <div class="editor-hint"><span>Plain text. Possibilities included.</span><span>⌘ / Ctrl + S to save</span></div>
+        </div>
+        <div id="board-pane" class="board-pane" hidden><div class="board-heading"><div><span class="eyebrow">THE WHOLE PICTURE</span><h2>Your plans, in lanes.</h2><p>Markdown headings become columns. Nothing to keep in sync.</p></div><span class="mode-glyph" aria-hidden="true">▦</span></div><div id="board-columns" class="board-columns"></div></div>
+        <div id="focus-pane" class="focus-pane" hidden><div class="focus-topline"><span class="eyebrow"><span class="live-dot"></span> PROTECT YOUR ATTENTION</span><span id="focus-remaining"></span></div><div class="focus-orbit"><svg viewBox="0 0 220 220" aria-hidden="true"><circle class="orbit-track" cx="110" cy="110" r="96"/><circle id="timer-ring" class="orbit-progress" cx="110" cy="110" r="96"/></svg><div class="timer-face"><span id="timer-label">FOCUS SESSION</span><span id="timer-display">25:00</span><button id="timer-start" class="timer-start">Start the clock ↗</button></div></div><div class="timer-options" role="group" aria-label="Timer duration"><button data-minutes="25" aria-pressed="true">25 min</button><button data-minutes="50" aria-pressed="false">50 min</button><button data-minutes="5" aria-pressed="false">5 min break</button><button id="timer-reset" aria-label="Reset timer">↺</button></div><div id="focus-task" class="focus-task"></div><div class="focus-actions"><button id="focus-complete" class="button button-dark">✓ &nbsp; Mark done. Keep moving.</button><button id="focus-skip" class="button">Next task →</button></div><p class="focus-footnote">One task. One stretch of attention. That’s enough.</p></div>
+        <div id="preview-pane" class="preview-pane">
+          <div class="page-meta"><span><span class="page-dot"></span> THE LIVING LIST</span><label class="hide-toggle"><input id="hide-completed" type="checkbox"> Hide done</label></div>
+          <article id="preview" class="markdown" aria-label="Rendered checklist" aria-busy="true"><p class="loading">Getting everyone on the same page…</p></article>
+          <div id="no-matches" class="no-matches" hidden><span>⌕</span><h3>Nothing in this corner.</h3><p>Try another search or switch back to all tasks.</p><button id="clear-filters" class="button">Clear filters</button></div>
+          <div id="all-done" class="all-done" hidden><span aria-hidden="true">✓</span><strong>That’s everything.</strong><p>You earned a little breathing room.</p></div>
+          <form id="quick-add" class="quick-add" autocomplete="off"><label for="new-task" class="sr-only">New task</label><span aria-hidden="true">+</span><input id="new-task" placeholder="Add a little to-do…" maxlength="1000" required disabled><button id="add-task" type="submit" disabled>Add <span aria-hidden="true">↵</span></button></form>
+          <p class="quick-add-hint">Supercharge a task: <code>!high</code> <code>#design</code> <code>@YYYY-MM-DD</code></p>
+        </div>
+      </div>
+      <footer class="notebook-footer"><span id="save-status" role="status" aria-live="polite"><span class="status-dot"></span> Loading page</span><span id="revision">ONE PAGE, TOGETHER</span></footer>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Less organizing. More doing.</span><span>Made for the checkbox kind of person. <span class="footer-box" aria-hidden="true">✓</span></span></footer>
+  <canvas id="fx-canvas" aria-hidden="true"></canvas><div id="xp-burst" class="xp-burst" aria-live="polite" hidden></div><div id="level-banner" class="level-banner" role="status" hidden></div>
+  <div id="celebration" class="celebration" aria-hidden="true" hidden><div>✓</div><span>ONE LESS THING.</span></div>
+  <dialog id="command-dialog" class="command-dialog" aria-label="Command center"><div class="command-input-row"><span>⌕</span><label for="command-input" class="sr-only">Search commands and tasks</label><input id="command-input" placeholder="What’s the next move?" autocomplete="off"><button class="icon-button" data-close aria-label="Close command center">×</button></div><div id="command-results" class="command-results"></div><footer><span>↑ ↓ to navigate &nbsp; ↵ to go</span><span>ESC to close</span></footer></dialog>
+  <dialog id="templates-dialog" class="wide-dialog" aria-labelledby="templates-title"><div class="dialog-heading"><div><div class="eyebrow">SKIP THE BLANK PAGE</div><h2 id="templates-title">Pick your next adventure.</h2></div><button class="icon-button" data-close aria-label="Close playbooks">×</button></div><p>Real checklists, ready to make your own. Added to your page, never replacing what’s there.</p><div id="template-grid" class="template-grid"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">Small syntax, big plans.</h2><button class="icon-button" data-close aria-label="Close cheatsheet">×</button></div><p>Switch to Markdown to write. Switch back to check things off.</p><dl class="cheatsheet"><dt><code>- [ ] A thing to do</code></dt><dd>An unchecked box</dd><dt><code>- [x] A thing you did</code></dt><dd>A checked box</dd><dt><code># The big idea</code></dt><dd>A heading (## for a smaller one)</dd><dt><code>**a little emphasis**</code></dt><dd>Bold text</dd><dt><code>[a useful link](https://…)</code></dt><dd>A link</dd><dt><code>  - [ ] A smaller step</code></dt><dd>A nested task (indent two spaces)</dd></dl><p class="dialog-note">Power syntax: <code>!high</code> adds priority, <code>#tag</code> adds a label, and <code>@2026-10-14</code> sets a due date. Markdown headings become board columns. ⌘ / Ctrl + K opens the command center.</p><p class="dialog-note">Enter continues a list. Tab indents. Ctrl / ⌘ + Enter toggles the task on your current line. Changes save automatically.</p></dialog>
+  <dialog id="history-dialog" class="wide-dialog" aria-labelledby="history-title"><div class="dialog-heading"><h2 id="history-title">A little time travel.</h2><button class="icon-button" data-close aria-label="Close history">×</button></div><p>The last 50 saved versions. Restoring a version makes a new save; it doesn’t erase history.</p><div id="history-list" class="history-list"></div><div id="history-detail" hidden><pre id="history-source"></pre><button id="restore" class="button button-dark">Use this version as a draft</button></div></dialog>
+  <dialog id="compare-dialog" class="wide-dialog" aria-labelledby="compare-title"><div class="dialog-heading"><h2 id="compare-title">Two versions. Your call.</h2><button class="icon-button" data-close aria-label="Close comparison">×</button></div><p>Copy anything you want to keep into your draft before publishing it.</p><div class="comparison"><section><h3>Your draft</h3><pre id="compare-local"></pre></section><section><h3>Latest shared page</h3><pre id="compare-remote"></pre></section></div></dialog>
+  <noscript><div class="noscript">Checkerboxer needs JavaScript to edit and sync your shared page. Please enable it and reload.</div></noscript>
+</body>
+</html>

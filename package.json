@@ -1,0 +1,19 @@
+{
+  "name": "checkerboxer",
+  "version": "1.0.0",
+  "description": "One deployment. One shared Markdown checklist.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "check": "node --check server.js && node --check public/app.js && node --test"
+  },
+  "dependencies": {
+    "markdown-it": "14.3.2"
+  }
+}

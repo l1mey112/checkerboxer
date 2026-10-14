@@ -1,0 +1,13 @@
+{
+  "productName": "Checkerboxer",
+  "category": "Productivity",
+  "description": "One deployment, one shared Markdown checklist. Work together live, turn headings into a task board, focus on one thing, and earn shared XP as you check things off.",
+  "detail": "Checkerboxer turns one Markdown document into a shared checklist, a board, and a focus workspace. Add tasks, priorities, tags, and due dates without accounts. Changes sync live across browsers, with autosave, conflict detection, downloadable Markdown, and 50 saved revisions. A command palette, playbook templates, day/night themes, and a focus timer keep work moving. Completing tasks earns persistent shared XP, ranks, and levels; quick completions build a session combo with optional sound and reduced-motion-aware effects. Every deployment has its own SQLite data volume. Anyone who can reach the page can read and edit it: do not use it for confidential information without an access-control gateway.",
+  "maintainerName": "Liam Leadbetter",
+  "contactEmail": "l-m@l-m.dev",
+  "license": "UNLICENSED",
+  "website": "https://github.com/l1mey112/checkerboxer",
+  "supportUrl": "https://github.com/l1mey112/checkerboxer/issues",
+  "alternatives": [],
+  "partnershipNotes": ""
+}
